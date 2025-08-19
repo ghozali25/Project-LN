@@ -754,73 +754,69 @@ dir="{{ Helper::determineLanguageDirection() }}">
                         @endcan
 
                         @can('reports.view')
-                                   <li @class([
-                                        'active' => Request::is('reports/activity'),
-                                        'nav-item'
-                                    ])>
-                                <a href="#" class="dropdown-toggle">
-                                    <x-icon type="reports" class="fa-fw" />
-                                    <span>{{ trans('general.reports') }}</span>
-                                    <x-icon type="angle-left" class="pull-right"/>
-                                </a>
+    <li @class([
+        'active' => Request::is('reports/*'),
+        'nav-item',
+        'treeview'
+    ])>
+        <a href="#" class="dropdown-toggle">
+            <x-icon type="reports" class="fa-fw" />
+            <span>{{ trans('general.reports') }}</span>
+            <x-icon type="angle-left" class="pull-right"/>
+        </a>
 
-                                <ul class="treeview-menu">
-                                    <li @class([
-                                        'active' => Request::is('reports/activity'),
-                                        'nav-item'
-                                    ])>
-                                        <a href="{{ route('reports.activity') }}">
-                                            {{ trans('general.activity_report') }}
-                                        </a>
-                                    </li>
-                                    <li @class(['active' => Request::is('reports/custom')])>
-                                        <a href="{{ url('reports/custom') }}">
-                                            {{ trans('general.custom_report') }}
-                                        </a>
-                                    </li>
+        <ul class="treeview-menu">
+            <li @class(['active' => Request::is('reports/activity')])>
+                <a href="{{ route('reports.activity') }}">
+                    {{ trans('general.activity_report') }}
+                </a>
+            </li>
 
-                                    <li @class(['active' => Request::is('reports/audit')])>
-                                        <a href="{{ route('reports.audit') }}">
-                                            {{ trans('general.audit_report') }}
-                                        </a>
-                                    </li>
+            <li @class(['active' => Request::is('reports/custom')])>
+                <a href="{{ url('reports/custom') }}">
+                    {{ trans('general.custom_report') }}
+                </a>
+            </li>
 
-                                    <li @class(['active' => Request::is('reports/depreciation')])>
-                                        <a href="{{ url('reports/depreciation') }}">
-                                            {{ trans('general.depreciation_report') }}
-                                        </a>
-                                    </li>
+            <li @class(['active' => Request::is('reports/audit')])>
+                <a href="{{ route('reports.audit') }}">
+                    {{ trans('general.audit_report') }}
+                </a>
+            </li>
 
-                                    <li @class(['active' => Request::is('reports/licenses')])>
-                                        <a href="{{ url('reports/licenses') }}">
-                                            {{ trans('general.license_report') }}
-                                        </a>
-                                    </li>
+            <li @class(['active' => Request::is('reports/depreciation')])>
+                <a href="{{ url('reports/depreciation') }}">
+                    {{ trans('general.depreciation_report') }}
+                </a>
+            </li>
 
-                                    <li @class(['active' => Request::is('reports/asset_maintenances')])>
-                                        <a href="{{ url('reports/asset_maintenances') }}">
-                                            {{ trans('general.asset_maintenance_report') }}
-                                        </a>
-                                    </li>
+            <li @class(['active' => Request::is('reports/licenses')])>
+                <a href="{{ url('reports/licenses') }}">
+                    {{ trans('general.license_report') }}
+                </a>
+            </li>
 
-                                    <li @class(['active' => Request::is('reports/unaccepted_assets')])>
-                                        <a href="{{ url('reports/unaccepted_assets') }}">
-                                            {{ trans('general.unaccepted_asset_report') }}
-                                        </a>
-                                    </li>
+            <li @class(['active' => Request::is('reports/asset_maintenances')])>
+                <a href="{{ url('reports/asset_maintenances') }}">
+                    {{ trans('general.asset_maintenance_report') }}
+                </a>
+            </li>
 
-                                    <li @class(['active' => Request::is('reports/accessories')])>
-                                        <a href="{{ url('reports/accessories') }}">
-                                            {{ trans('general.accessory_report') }}
-                                        </a>
-                                    </li>
-                                        <a href="{{ url('reports/accessories') }}">
-                                            {{ trans('general.accessory_report') }}
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                        @endcan
+            <li @class(['active' => Request::is('reports/unaccepted_assets')])>
+                <a href="{{ url('reports/unaccepted_assets') }}">
+                    {{ trans('general.unaccepted_asset_report') }}
+                </a>
+            </li>
+
+            <li @class(['active' => Request::is('reports/accessories')])>
+                <a href="{{ url('reports/accessories') }}">
+                    {{ trans('general.accessory_report') }}
+                </a>
+            </li>
+        </ul>
+    </li>
+@endcan
+
 
                         @can('viewRequestable', \App\Models\Asset::class)
                             <li{!! (Request::is('account/requestable-assets') ? ' class="active"' : '') !!}>
